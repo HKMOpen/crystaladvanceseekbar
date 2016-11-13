@@ -40,6 +40,26 @@ public class PriceTagSeekBar extends CrystalRangeSeekbar implements OnRangeSeekb
         super(context, attrs, defStyleAttr);
     }
 
+    public void setFontSizeSmall(float n) {
+        small_size_text = n;
+    }
+
+    public void setFontSizeBig(float n) {
+        big_size_text = n;
+    }
+
+    public void setPressBigThumbY(float n) {
+        top_press_thumb_y = n;
+    }
+
+    public void setPressSmallThumbY(float n) {
+        top_small_thumb_y = n;
+    }
+
+    public void setBarPosY(float n) {
+        display_bar_y = n;
+    }
+
     protected int getMeasureSpecHeight(int heightMeasureSpec) {
         return super.getMeasureSpecHeight(heightMeasureSpec) * 5;
     }

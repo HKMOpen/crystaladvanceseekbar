@@ -23,24 +23,20 @@ import com.crystal.crystalrangeseekbar.widgets.MySeekbar;
  * Created by owais.ali on 7/15/2016.
  */
 public class Seekbar extends Fragment {
-
     protected View rootView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
         if (rootView != null) {
             ViewGroup parent = (ViewGroup) rootView.getParent();
             if (parent != null)
                 parent.removeView(rootView);
         }
-
         try {
             rootView = inflater.inflate(R.layout.seekbar, container, false);
         } catch (InflateException e) {
             e.printStackTrace();
         }
-
         return rootView;
     }
 
@@ -51,7 +47,6 @@ public class Seekbar extends Fragment {
     }
 
     public void init() {
-
         setRangeSeekbar1();
         setRangeSeekbar2();
         setRangeSeekbar3();
@@ -63,13 +58,10 @@ public class Seekbar extends Fragment {
     }
 
     private void setRangeSeekbar1(){
-
         // get seekbar from view
         final CrystalSeekbar seekbar = (CrystalSeekbar) rootView.findViewById(R.id.rangeSeekbar1);
-
         // get min and max text view
         final TextView tvMin = (TextView) rootView.findViewById(R.id.textMin1);
-
         // set listener
         seekbar.setOnSeekbarChangeListener(new OnSeekbarChangeListener() {
             @Override
@@ -77,7 +69,6 @@ public class Seekbar extends Fragment {
                 tvMin.setText(String.valueOf(minValue));
             }
         });
-
         // set final value listener
         seekbar.setOnSeekbarFinalValueListener(new OnSeekbarFinalValueListener() {
             @Override
@@ -88,13 +79,10 @@ public class Seekbar extends Fragment {
     }
 
     private void setRangeSeekbar2(){
-
         // get seekbar from view
         final BubbleThumbSeekbar rangeSeekbar = (BubbleThumbSeekbar) rootView.findViewById(R.id.rangeSeekbar2);
-
         // get min and max text view
         final TextView tvMin = (TextView) rootView.findViewById(R.id.textMin2);
-
         // set listener
         rangeSeekbar.setOnSeekbarChangeListener(new OnSeekbarChangeListener() {
             @Override
