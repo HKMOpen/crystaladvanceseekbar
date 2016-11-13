@@ -40,24 +40,29 @@ public class PriceTagSeekBar extends CrystalRangeSeekbar implements OnRangeSeekb
         super(context, attrs, defStyleAttr);
     }
 
-    public void setFontSizeSmall(float n) {
+    public PriceTagSeekBar setFontSizeSmall(float n) {
         small_size_text = n;
+        return this;
     }
 
-    public void setFontSizeBig(float n) {
+    public PriceTagSeekBar setFontSizeBig(float n) {
         big_size_text = n;
+        return this;
     }
 
-    public void setPressBigThumbY(float n) {
+    public PriceTagSeekBar setPressBigThumbY(float n) {
         top_press_thumb_y = n;
+        return this;
     }
 
-    public void setPressSmallThumbY(float n) {
+    public PriceTagSeekBar setPressSmallThumbY(float n) {
         top_small_thumb_y = n;
+        return this;
     }
 
-    public void setBarPosY(float n) {
+    public PriceTagSeekBar setBarPosY(float n) {
         display_bar_y = n;
+        return this;
     }
 
     protected int getMeasureSpecHeight(int heightMeasureSpec) {
