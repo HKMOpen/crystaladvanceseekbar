@@ -1,9 +1,5 @@
-# crystaladvanceseekbar
+# Crystal Advance Seek Bar
 [ ![Download](https://api.bintray.com/packages/syedowaisali/maven/crystalrangeseekbar/images/download.svg) ](https://bintray.com/syedowaisali/maven/crystalrangeseekbar/_latestVersion) [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Crystal%20Range%20Seekbar-brightgreen.svg?style=flat)](http://android-arsenal.com/details/1/3996) [![Coding Signals](https://img.shields.io/badge/Coding%20Signals-Crystal%20Range%20Seekbar-orange.svg)](http://codingsignals.com/crystal-range-seekbar-in-android/)
-
-
-
-# Crystal Range Seekbar
 
 An extended version of seekbar and range seekbar with basic and advanced customization.
 
@@ -13,7 +9,7 @@ An extended version of seekbar and range seekbar with basic and advanced customi
 Add a dependency to your `build.gradle`:
 ```groovy
 dependencies {
-    compile 'com.crystal:crystalrangeseekbar:1.1.1'
+    compile 'com.hkm.ui:crystalrangeseekbar:1.2.0'
 }
 ```
 

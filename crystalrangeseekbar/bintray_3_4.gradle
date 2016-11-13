@@ -8,7 +8,7 @@ publish {
     version = project.VERSION_NAME
     uploadName = 'crystalrangeseekbar'
     description = "The adjustable frame to decorate the image view"
-    website = 'https://github.com/HKMOpen/crystalrangeseekbar'
+    website = 'https://github.com/HKMOpen/crystaladvanceseekbar'
     autoPublish = true
     dryRun = false
     issueTracker = "${website}/issues"
