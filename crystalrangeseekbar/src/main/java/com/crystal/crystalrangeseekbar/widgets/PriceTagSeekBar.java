@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Rect;
 import android.graphics.RectF;
 import android.util.AttributeSet;
 
@@ -16,17 +17,15 @@ import com.crystal.crystalrangeseekbar.interfaces.OnRangeSeekbarChangeListener;
 public class PriceTagSeekBar extends CrystalRangeSeekbar implements OnRangeSeekbarChangeListener {
     private Number min_val, max_value;
     private Paint mPaintText;
+
     private float
             display_bar_y = 114f,
             top_press_thumb_y = 40f,
             top_small_thumb_y = 200f,
-
-    text_small_y = 50f,
+            text_small_y = 50f,
             text_big_y = 100f,
-
-    big_size_text = 70f,
+            big_size_text = 70f,
             small_size_text = 25f;
-
 
     public PriceTagSeekBar(Context context) {
         super(context);
@@ -38,6 +37,16 @@ public class PriceTagSeekBar extends CrystalRangeSeekbar implements OnRangeSeekb
 
     public PriceTagSeekBar(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+    }
+
+    private float getTextHeight(String text, Paint paint) {
+        Rect rect = new Rect();
+        paint.getTextBounds(text, 0, text.length(), rect);
+        return rect.height() / 1.1f;
+    }
+
+    private float getTextWidth(String text, Paint paint) {
+        return paint.measureText(text);
     }
 
     public PriceTagSeekBar setFontSizeSmall(float n) {
@@ -120,6 +129,26 @@ public class PriceTagSeekBar extends CrystalRangeSeekbar implements OnRangeSeekb
         }
     }
 
+    private float finddrawxv1(RectF main, String display_text, Paint mpaint) {
+        mpaint.setTextSize(getTextSize(small_size_text, display_text.length()));
+        mpaint.setTextAlign(Paint.Align.CENTER);
+        float t_width = getTextWidth(display_text, mpaint);
+        float dx1 = main.right - main.left;
+        float ddx = dx1 - t_width;
+        float start_x = main.left + ddx / 2f + t_width / 2f;
+        return start_x;
+    }
+
+    private float finddrawxv2(RectF main, String display_text, Paint mpaint) {
+        mpaint.setTextSize(getTextSize(big_size_text, display_text.length()));
+        mpaint.setTextAlign(Paint.Align.CENTER);
+        float t_width = getTextWidth(display_text, mpaint);
+        float dx1 = main.right - main.left;
+        float ddx = dx1 - t_width;
+        float start_x = main.left + t_width / 1f + 5f;
+        return start_x;
+    }
+
     @Override
     protected void setupLeftThumb(Canvas canvas, Paint paint, RectF rect) {
         super.setupLeftThumb(canvas, paint, rect);
@@ -127,11 +156,13 @@ public class PriceTagSeekBar extends CrystalRangeSeekbar implements OnRangeSeekb
         String ts = min_val.intValue() <= 0 ? "Free" : min_val.toString() + "K";
         RectF main = getLeftThumbRect();
         if (Thumb.MIN.equals(getPressedThumb())) {
-            mPaintText.setTextSize(getTextSize(big_size_text, ts.length()));
-            canvas.drawText(ts, main.left + 130f, main.top + text_big_y, mPaintText);
+            float t_height = getTextHeight(ts, mPaintText);
+            float start_x = finddrawxv2(main, ts, mPaintText);
+            canvas.drawText(ts, start_x, main.top + text_big_y, mPaintText);
         } else {
-            mPaintText.setTextSize(getTextSize(small_size_text, ts.length()));
-            canvas.drawText(ts, main.left + 55f, main.top + text_small_y, mPaintText);
+            float t_height = getTextHeight(ts, mPaintText);
+            float start_x = finddrawxv1(main, ts, mPaintText);
+            canvas.drawText(ts, start_x, main.top + text_small_y, mPaintText);
         }
     }
 
@@ -142,11 +173,13 @@ public class PriceTagSeekBar extends CrystalRangeSeekbar implements OnRangeSeekb
         String ts = max_value.intValue() >= 100 ? max_value.toString() + "K+" : max_value.toString() + "K";
         RectF main = getRightThumbRect();
         if (Thumb.MAX.equals(getPressedThumb())) {
-            mPaintText.setTextSize(getTextSize(big_size_text, ts.length()));
-            canvas.drawText(ts, main.left + 130f, main.top + text_big_y, mPaintText);
+            float t_height = getTextHeight(ts, mPaintText);
+            float start_x = finddrawxv2(main, ts, mPaintText);
+            canvas.drawText(ts, start_x, main.top + text_big_y, mPaintText);
         } else {
-            mPaintText.setTextSize(getTextSize(small_size_text, ts.length()));
-            canvas.drawText(ts, main.left + 55f, main.top + text_small_y, mPaintText);
+            float t_height = getTextHeight(ts, mPaintText);
+            float start_x = finddrawxv1(main, ts, mPaintText);
+            canvas.drawText(ts, start_x, main.top + text_small_y, mPaintText);
         }
     }
 }

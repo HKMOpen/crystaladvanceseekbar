@@ -80,7 +80,7 @@ public class myTest extends Fragment {
                 rangeSeekbar.setMinValue(0).setMaxValue(100)
                         .setMinStartValue(7).setMaxStartValue(10).apply();
             }
-        }, 3000);
+        }, 1000);
 
         rangeSeekbar
                 .setMaxValue(100)
